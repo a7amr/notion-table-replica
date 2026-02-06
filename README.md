@@ -21,5 +21,8 @@ Open `http://localhost:3000` in your browser.
 Next.js (App Router), TypeScript, Tailwind CSS, Radix Popover, AI tool (OpenAI Codex).
 
 ## Workflow Efficiency Report (short)
-Used component-first scaffolding + Tailwind token extraction + iterative UI tweaks, verifying layout changes with quick in-app checks.  
-AI-assisted refactors for memoization, drag-and-drop handling, and inline documentation/comment pass.
+Component-first decomposition (Toolbar, header, rows, cells, popovers) to isolate behavior and styling changes so complex interactions could be tuned without cross-impact.  
+State-driven UI for selection, sorting, filtering, column management, and comments to avoid DOM workarounds and keep interactions predictable.  
+Layout iteration followed a quick feedback loop: adjust Tailwind tokens, verify spacing/hover states in-app, then refine until the Notion-like density and alignment matched.  
+Column/menu behaviors were built as small, composable handlers, which reduced rework when adding move/duplicate/delete and selection-based actions.  
+AI-assisted refactors were used to tighten memoization, drag-and-drop handling, and an inline documentation/comment pass without altering visual output.
