@@ -916,24 +916,26 @@ export default function DatabaseTable({ rows, setRows, query, sort, filterText }
         >
           <div className="h-10 flex items-center gap-1 pl-1.5">
             <span className="h-4 w-4" aria-hidden="true" />
-            <Checkbox
-              checked={allSelected}
-              indeterminate={isIndeterminate}
-              visibleClass="opacity-100"
-              ariaLabel="Select all rows"
-              onClick={() => {
-                if (allSelected) {
-                  setSelected({});
-                } else {
-                  const next: Record<string, boolean> = {};
-                  rows.forEach((r) => (next[r.id] = true));
-                  setSelected(next);
-                }
-              }}
-            />
+            <div className="mr-4">
+              <Checkbox
+                checked={allSelected}
+                indeterminate={isIndeterminate}
+                visibleClass="opacity-100"
+                ariaLabel="Select all rows"
+                onClick={() => {
+                  if (allSelected) {
+                    setSelected({});
+                  } else {
+                    const next: Record<string, boolean> = {};
+                    rows.forEach((r) => (next[r.id] = true));
+                    setSelected(next);
+                  }
+                }}
+              />
+            </div>
           </div>
 
-          <div className="h-10 flex items-center gap-2 px-3 text-[#cfcfcf]">
+          <div className="h-10 flex items-center gap-2 pl-4 pr-3 text-[#cfcfcf]">
             <span className="text-[#9b9b9b]">Aa</span>
             <span className="font-medium">{propertyName}</span>
           </div>
@@ -1166,19 +1168,21 @@ export default function DatabaseTable({ rows, setRows, query, sort, filterText }
                       <circle cx="16" cy="17" r="1.4" />
                     </svg>
                   </button>
-                  <Checkbox
-                    checked={isSelected}
-                    visibleClass={
-                      isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                    }
-                    ariaLabel="Select row"
-                    onClick={() => toggleRow(row.id)}
-                  />
+                  <div className="mr-4">
+                    <Checkbox
+                      checked={isSelected}
+                      visibleClass={
+                        isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      }
+                      ariaLabel="Select row"
+                      onClick={() => toggleRow(row.id)}
+                    />
+                  </div>
 
                 </div>
 
                 {/* name cell */}
-                <div className="h-10 flex items-center px-3 relative">
+                <div className="h-10 flex items-center pl-4 pr-3 relative">
                 {!isEditing ? (
                   <div className="flex items-center gap-2 w-full">
                     <button
@@ -1399,7 +1403,7 @@ export default function DatabaseTable({ rows, setRows, query, sort, filterText }
                   const isDateOpen =
                     datePicker?.rowId === row.id && datePicker?.propId === prop.id;
                   return (
-                    <div key={prop.id} className="h-10 flex items-center px-1.5">
+                    <div key={prop.id} className="h-10 flex items-center px-1.5 border-l border-[#242424]">
                       {prop.type === "checkbox" ? (
                         <input
                           type="checkbox"
@@ -1482,13 +1486,14 @@ export default function DatabaseTable({ rows, setRows, query, sort, filterText }
                 })}
 
                 {/* add property spacer */}
-                <div className="h-10" />
+                <div className="h-10 border-l border-[#242424]" />
               </div>
             );
           })}
         </div>
 
         {/* footer */}
+        <div className="h-px bg-[#2a2a2a]" />
         <button
           onClick={() => setRows((prev) => [{ id: uid(), name: "Untitled" }, ...prev])}
           className="w-full text-left h-10 pl-14 pr-4 text-sm text-[#9b9b9b] hover:bg-[#1f1f1f] hover:pl-16 transition-all"
