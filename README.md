@@ -1,4 +1,5 @@
 # Notion Table Replica
+https://notion-table-replica.vercel.app/
 
 ## Reference UI chosen
 Notion Database Table View (dark). Focused on the compact toolbar, column header treatment, and row hover/selection affordances.
